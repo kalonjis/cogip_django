@@ -1,0 +1,1 @@
+# cogip_django
