@@ -3,14 +3,6 @@ from django.template.defaultfilters import slugify
 
 from office.countries import COUNTRIES
 
-"""Company
-    -name,
-    -num tva,
-    -type (provider or client),
-    -invoices,
-    -contacts
-    """
-
 
 class Company(models.Model):
     # Type of company choices
@@ -35,3 +27,25 @@ class Company(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
+
+class Contact(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    email = models.EmailField()
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
+
+    class Meta:
+        verbose_name = "Contact"
+
+    @property
+    def fullname(self):
+        return f"{self.firstname} {self.lastname}"
+
+    def __str__(self):
+        return self.fullname
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+            super().save(*args, **kwargs)
