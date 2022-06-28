@@ -34,6 +34,8 @@ class Contact(models.Model):
     phone = models.CharField(max_length=100)
     email = models.EmailField()
     slug = models.SlugField(max_length=120, unique=True, blank=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+
 
     class Meta:
         verbose_name = "Contact"
