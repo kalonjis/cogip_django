@@ -47,5 +47,23 @@ class Contact(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.fullname)
             super().save(*args, **kwargs)
+
+
+class Invoice(models.Model):
+    increment_num = 1
+    number = models.CharField(max_length=100, unique=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.number
+
+    def save(self, *args, increment_num=increment_num, **kwargs):
+        if not self.number:
+            self.number = str(increment_num).rjust(3, '0')
+            Invoice.increment_num += 1
+            super().save(*args, **kwargs)
+
