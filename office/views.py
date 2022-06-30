@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+from office.models import Company
+
+
+def base(request):
+    return render(request, 'office/base.html')
