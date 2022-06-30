@@ -5,12 +5,18 @@
     {% block content %}
         <h1> Contacts Home</h1>
         <table>
+            <tr>
+                <th>Name </th>
+                <th>Phone </th>
+                <th>Email </th>
+                <th>Company </th>
+            </tr>
             {% for contact in contacts %}
             <tr>
-                <td>Name : {{ contact.fullname }}</td>
-                <td>Phone : {{ contact.phone }}</td>
-                <td>Email : {{ contact.email }}</td>
-                <td>Company : {{ contact.company }}</td>
+                <td> {{ contact.fullname }} </td>
+                <td> {{ contact.phone }} </td>
+                <td> {{ contact.email }} </td>
+                <td> {{ contact.company }} </td>
             </tr>
             {% endfor %}
         </table>

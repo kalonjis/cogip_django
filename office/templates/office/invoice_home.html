@@ -5,12 +5,18 @@
     {% block content %}
         <h1> Invoices Home</h1>
         <table>
+            <tr>
+                <th>Number </th>
+                <th>Date </th>
+                <th>Company </th>
+                <th>Contact </th>
+            </tr>
             {% for invoice in invoices %}
             <tr>
-                <td>Number : {{ invoice.number }}</td>
-                <td>Date : {{ invoice.date }}</td>
-                <td>Company : {{ invoice.company }}</td>
-                <td>Contact : {{ invoice.contact }}</td>
+                <td> {{ invoice.number }} </td>
+                <td> {{ invoice.date }} </td>
+                <td> {{ invoice.company }} </td>
+                <td> {{ invoice.contact }} </td>
             </tr>
             {% endfor %}
         </table>
