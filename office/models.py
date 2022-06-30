@@ -54,7 +54,7 @@ class Contact(models.Model):
 
 
 class Invoice(models.Model):
-    increment_num = 1
+    increment_num = 2
     number = models.CharField(max_length=100, unique=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
@@ -63,9 +63,9 @@ class Invoice(models.Model):
     def __str__(self):
         return self.number
 
-    def save(self, *args, increment_num=increment_num, **kwargs):
+    def save(self, *args, **kwargs):
+        Invoice.increment_num += 1
         if not self.number:
-            self.number = str(increment_num).rjust(3, '0')
-            Invoice.increment_num += 1
+            self.number = str(Invoice.increment_num).rjust(3, '0')
             super().save(*args, **kwargs)
 
