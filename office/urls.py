@@ -13,7 +13,7 @@ urlpatterns = [
     path('contact/<str:slug>/',
          OfficeDetailView.as_view(model=Contact, template_name='office/contact/contact_detail.html', context_object_name='contact'),
          name='contact-detail'),
-    path('invoice/<str:number>/',
+    path('invoice/<str:pk>/',
          OfficeDetailView.as_view(model=Invoice, template_name='office/invoice/invoice_detail.html', context_object_name='invoice'),
          name='invoice-detail'),
 
