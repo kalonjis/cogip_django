@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from office.models import Company, Contact, Invoice
 from django.views import View
@@ -21,4 +21,11 @@ class HomeView(ListView):
     model = 'default'
     template_name = 'office/home.html'
     context_object_name = 'default'
+
+
+class OfficeDetailView(DetailView):
+    model = 'default'
+    template_name = 'office/home.html'
+    context_object_name = 'default'
+
 

@@ -1,0 +1,23 @@
+{% extends 'office/base.html' %}
+
+    {% block title %}
+        <title>{{company.name}}</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1> {{company.name}}</h1>
+        <table>
+            <tr>
+                <th>Name </th>
+                <th>VAT </th>
+                <th>Type </th>
+                <th>Country </th>
+            </tr>
+            <tr>
+                <td> {{ company.name }}</td>
+                <td> {{ company.vat_num }}</td>
+                <td> {{ company.type }}</td>
+                <td> {{ company.country }}</td>
+            </tr>
+        </table>
+    {% endblock %}
