@@ -27,6 +27,14 @@ class Company(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
+    @property
+    def type_value(self):
+        return self.get_type_display()
+
+    @property
+    def country_value(self):
+        return self.get_country_display()
+
 
 class Contact(models.Model):
     firstname = models.CharField(max_length=100)
