@@ -1,0 +1,23 @@
+{% extends 'office/base.html' %}
+
+    {% block title %}
+        <title>{{contact.name}}</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1> {{contact.name}}</h1>
+        <table>
+            <tr>
+                <th>Name </th>
+                <th>Phone </th>
+                <th>Email </th>
+                <th>Company </th>
+            </tr>
+            <tr>
+                <td> {{ contact.fullname }} </td>
+                <td> {{ contact.phone }} </td>
+                <td> {{ contact.email }} </td>
+                <td> {{ contact.company }} </td>
+            </tr>
+        </table>
+    {% endblock %}

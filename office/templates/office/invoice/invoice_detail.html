@@ -1,0 +1,21 @@
+{% extends 'office/base.html' %}
+
+    {% block title %}
+        <title>{{ invoice.number }}</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1> {{ invoice.number }}</h1>
+           <table>
+                <tr>
+                    <th>Date </th>
+                    <th>Company </th>
+                    <th>Contact </th>
+                </tr>
+                <tr>
+                    <td> {{ invoice.date }} </td>
+                    <td> {{ invoice.company }} </td>
+                    <td> {{ invoice.contact }} </td>
+                </tr>
+           </table>
+    {% endblock %}
