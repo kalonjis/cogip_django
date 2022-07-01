@@ -1,5 +1,68 @@
 {% extends 'office/base.html' %}
 
+    {% block title %}<title>Accueil</title>  {% endblock %}
+
     {% block content %}
-        <h1> Page Index</h1>
+    <h1>Accueil</h1>
+    <div>
+        <h2> Companies</h2>
+        <table>
+            <tr>
+                <th>Name </th>
+                <th>VAT </th>
+                <th>Type </th>
+                <th>Country </th>
+            </tr>
+            {% for company in companies %}
+            <tr>
+                <td> {{ company.name }}</td>
+                <td> {{ company.vat_num }}</td>
+                <td> {{ company.type }}</td>
+                <td> {{ company.country }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <h2> Contacts </h2>
+        <table>
+            <tr>
+                <th>Name </th>
+                <th>Phone </th>
+                <th>Email </th>
+                <th>Company </th>
+            </tr>
+            {% for contact in contacts %}
+            <tr>
+                <td> {{ contact.fullname }} </td>
+                <td> {{ contact.phone }} </td>
+                <td> {{ contact.email }} </td>
+                <td> {{ contact.company }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <h2> Invoices</h2>
+        <table>
+            <tr>
+                <th>Number </th>
+                <th>Date </th>
+                <th>Company </th>
+                <th>Contact </th>
+            </tr>
+            {% for invoice in invoices %}
+            <tr>
+                <td> {{ invoice.number }} </td>
+                <td> {{ invoice.date }} </td>
+                <td> {{ invoice.company }} </td>
+                <td> {{ invoice.contact }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
     {% endblock %}
