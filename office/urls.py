@@ -24,5 +24,9 @@ urlpatterns = [
     path('contact-edit/<str:slug>/',
          OfficeUpdateView.as_view(model=Contact, template_name='office/contact/contact_edit.html', fields=['firstname', 'lastname', 'phone', 'email', 'company']),
          name='contact-edit'),
+    path('invoice-edit/<str:pk>/',
+         OfficeUpdateView.as_view(model=Invoice, template_name='office/invoice/invoice_edit.html', fields=['company', 'contact']),
+         name='invoice-edit'),
 
 ]
+

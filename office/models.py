@@ -80,5 +80,8 @@ class Invoice(models.Model):
         Invoice.increment_num += 1
         if not self.number:
             self.number = str(Invoice.increment_num).rjust(3, '0')
-            super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('office:invoice-home')
 
