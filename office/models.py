@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 from office.countries import COUNTRIES
 
@@ -35,6 +36,9 @@ class Company(models.Model):
     def country_value(self):
         return self.get_country_display()
 
+    def get_absolute_url(self):
+        return reverse('office:company-home')
+
 
 class Contact(models.Model):
     firstname = models.CharField(max_length=100)
@@ -58,7 +62,10 @@ class Contact(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.fullname)
-            super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('office:contact-home')
 
 
 class Invoice(models.Model):

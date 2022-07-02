@@ -3,6 +3,8 @@ from django.urls import path, include
 from office.models import Company, Contact, Invoice
 from office.views import HomeView, OfficeDetailView, OfficeUpdateView
 
+app_name = "office"
+
 urlpatterns = [
     path('company/', HomeView.as_view(model=Company, template_name='office/company/company_home.html', context_object_name='companies'), name='company-home'),
     path('contact/', HomeView.as_view(model=Contact, template_name='office/contact/contact_home.html', context_object_name='contacts'), name='contact-home'),

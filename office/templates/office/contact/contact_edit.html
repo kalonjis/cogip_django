@@ -8,6 +8,7 @@
         <h1>Editer {{ contact.name }}</h1>
 
         <form method="POST">
+
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="Editer" class="btn btn-submit">
