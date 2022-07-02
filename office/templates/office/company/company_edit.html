@@ -1,0 +1,15 @@
+{% extends 'office/base.html' %}
+
+    {% block title %}
+        <title>Editer {{company.name}}</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1>Editer {{ company.name }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Editer" class="btn btn-submit">
+        </form>
+    {% endblock %}
