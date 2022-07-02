@@ -1,0 +1,15 @@
+{% extends 'office/base.html' %}
+
+{% block title %}
+    <title>Supprimer une facture</title>
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Êtes-vous sûr de vouloir supprimer la facture "{{ invoice }}"?</p>
+        <input type="submit" value="Oui, supprimer" class="btn btn-delete">
+    </form>
+
+{% endblock %}

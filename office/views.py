@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 
 from office.models import Company, Contact, Invoice
 from django.views import View
@@ -33,5 +34,13 @@ class OfficeUpdateView(UpdateView):
     model = 'default'
     template_name = 'office/home.html'
     fields = []
+
+
+class OfficeDeleteView(DeleteView):
+    model = "default"
+    template_name = 'default'
+    context_object_name = "default"
+    redirect_page = "home"
+    success_url = reverse_lazy(redirect_page)
 
 

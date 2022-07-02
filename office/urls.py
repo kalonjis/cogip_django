@@ -1,7 +1,7 @@
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
 
 from office.models import Company, Contact, Invoice
-from office.views import HomeView, OfficeDetailView, OfficeUpdateView
+from office.views import HomeView, OfficeDetailView, OfficeUpdateView, OfficeDeleteView
 
 app_name = "office"
 
@@ -27,6 +27,9 @@ urlpatterns = [
     path('invoice-edit/<str:pk>/',
          OfficeUpdateView.as_view(model=Invoice, template_name='office/invoice/invoice_edit.html', fields=['company', 'contact']),
          name='invoice-edit'),
+    path('invoice-delete/<str:pk>/',
+         OfficeDeleteView.as_view(model=Invoice, template_name='office/invoice/invoice_confirm_delete.html', context_object_name='invoice', redirect_page='invoice-home'),
+         name='invoice-delete'),
 
 ]
 
