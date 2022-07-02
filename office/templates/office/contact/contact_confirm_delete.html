@@ -1,0 +1,15 @@
+{% extends 'office/base.html' %}
+
+{% block title %}
+    <title>Supprimer un contact</title>
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Êtes-vous sûr de vouloir supprimer le contact "{{ contact }}"?</p>
+        <input type="submit" value="Oui, supprimer" class="btn btn-delete">
+    </form>
+
+{% endblock %}
