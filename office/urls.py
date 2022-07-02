@@ -19,5 +19,8 @@ urlpatterns = [
     path('company-edit/<str:slug>/',
          OfficeUpdateView.as_view(model=Company, template_name='office/company/company_edit.html', fields=['name', 'vat_number', 'type', 'country']),
          name='company-edit'),
+    path('contact-edit/<str:slug>/',
+         OfficeUpdateView.as_view(model=Contact, template_name='office/contact/contact_edit.html', fields=['firstname', 'lastname', 'phone', 'email', 'company']),
+         name='contact-edit'),
 
 ]
