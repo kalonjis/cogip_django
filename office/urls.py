@@ -28,13 +28,13 @@ urlpatterns = [
          OfficeUpdateView.as_view(model=Invoice, template_name='office/invoice/invoice_edit.html', fields=['company', 'contact']),
          name='invoice-edit'),
     path('company-delete/<str:slug>/',
-         OfficeDeleteView.as_view(model=Company, template_name='office/company/company_confirm_delete.html', context_object_name='company', redirect_page='office:company-home'),
+         OfficeDeleteView.as_view(model=Company, template_name='office/company/company_confirm_delete.html', context_object_name='company', success_url=reverse_lazy('office:company-home')),
          name='company-delete'),
     path('contact-delete/<str:slug>/',
-         OfficeDeleteView.as_view(model=Contact, template_name='office/contact/contact_confirm_delete.html', context_object_name='contact', redirect_page='office:contact-home'),
+         OfficeDeleteView.as_view(model=Contact, template_name='office/contact/contact_confirm_delete.html', context_object_name='contact', success_url=reverse_lazy('office:contact-home')),
          name='contact-delete'),
     path('invoice-delete/<str:pk>/',
-         OfficeDeleteView.as_view(model=Invoice, template_name='office/invoice/invoice_confirm_delete.html', context_object_name='invoice', redirect_page='invoice-home'),
+         OfficeDeleteView.as_view(model=Invoice, template_name='office/invoice/invoice_confirm_delete.html', context_object_name='invoice', success_url=reverse_lazy('office:invoice-home')),
          name='invoice-delete'),
 
 ]

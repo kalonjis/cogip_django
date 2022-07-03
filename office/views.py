@@ -40,7 +40,6 @@ class OfficeDeleteView(DeleteView):
     model = "default"
     template_name = 'default'
     context_object_name = "default"
-    redirect_page = "home"
-    success_url = reverse_lazy(redirect_page)
+    success_url = reverse_lazy("home")
 
 
