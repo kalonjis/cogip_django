@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from office.models import Company, Contact, Invoice
 from django.views import View
@@ -29,6 +29,11 @@ class OfficeDetailView(DetailView):
     template_name = 'office/home.html'
     context_object_name = 'default'
 
+
+class OfficeCreateView(CreateView):
+    model = 'default'
+    template_name = 'office/home.html'
+    fields = []
 
 class OfficeUpdateView(UpdateView):
     model = 'default'
