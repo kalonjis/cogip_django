@@ -20,6 +20,6 @@ from office.views import home
 
 urlpatterns = [
     path('', home, name='home'),
-    path('admin/', admin.site.urls),
+    path('my-office-admin/', admin.site.urls),
     path('office/', include('office.urls')),
 ]
