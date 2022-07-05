@@ -4,6 +4,15 @@
 
     {% block content %}
     <h1>Accueil</h1>
+
+    {% if request.user.is_authenticated %}
+    <ul>
+        <a href="{% url 'office:invoice-create' %}"><li>+ nouvelle factures</li></a>
+        <a href="{% url 'office:contact-create' %}"><li>+ nouveau contact</li></a>
+        <a href="{% url 'office:company-create' %}"><li>+ nouvelle société</li></a>
+    </ul>
+    {% endif %}
+
     <div>
         <h2> Companies</h2>
         <table>
