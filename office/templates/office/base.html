@@ -17,7 +17,7 @@
         <a href="{% url 'office:company-home' %}">Sociétés</a>
         <a href="{% url 'office:contact-home' %}">Contacts</a>
         {% if request.user.is_authenticated %}
-            <a href="./my-office-admin/">Admin</a>
+            <a href="{% url 'home' %}">Admin</a>
         {% else %}
             <a href="{% url 'home' %}">Connexion</a>
         {% endif %}

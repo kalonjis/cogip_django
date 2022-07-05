@@ -19,7 +19,7 @@ from django.urls import path, include
 from office.views import home
 
 urlpatterns = [
+    path('my-office-admin/',  admin.site.urls),
     path('', home, name='home'),
-    path('my-office-admin/', admin.site.urls),
     path('office/', include('office.urls')),
 ]
