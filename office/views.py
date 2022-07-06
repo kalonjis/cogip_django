@@ -40,6 +40,18 @@ def contact_details(request, slug):
     return render(request, 'office/contact/contact_detail.html', context=context)
 
 
+def invoice_details(request, pk):
+    invoice = Invoice.objects.get(pk=pk)
+    contact = Contact.objects.get(pk=invoice.contact_id)
+    company = Company.objects.get(pk=invoice.company_id)
+    context = {
+        'company': company,
+        'contact': contact,
+        'invoice': invoice
+    }
+    return render(request, 'office/invoice/invoice_detail.html', context=context)
+
+
 class HomeView(ListView):
     model = 'default'
     template_name = 'office/home.html'

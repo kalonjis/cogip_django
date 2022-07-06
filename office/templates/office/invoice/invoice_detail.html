@@ -5,17 +5,35 @@
     {% endblock %}
 
     {% block content %}
-        <h1> {{ invoice.number }}</h1>
+        <h1> Facture : {{ invoice.number }}</h1>
+        <p>Date : {{ invoice.date }}</p>
+
+        <h3>Société liée à la facture </h3>
+
            <table>
                 <tr>
-                    <th>Date </th>
-                    <th>Company </th>
-                    <th>Contact </th>
+                    <th>Nom </th>
+                    <th>TVA </th>
+                    <th>Type de société </th>
                 </tr>
                 <tr>
-                    <td> {{ invoice.date }} </td>
-                    <td> {{ invoice.company }} </td>
-                    <td> {{ invoice.contact }} </td>
+                    <td> {{ company.name }} </td>
+                    <td> {{ company.vat_number }} </td>
+                    <td> {{ company.type_value }} </td>
                 </tr>
            </table>
+
+        <h3>Personne de contact </h3>
+            <table>
+                <tr>
+                    <th>Nom </th>
+                    <th>Phone </th>
+                    <th>Email </th>
+                </tr>
+                    <tr>
+                        <td> {{ contact.fullname}} </td>
+                        <td> {{ contact.phone}} </td>
+                        <td> {{ contact.email}} </td>
+                    </tr>
+            </table>
     {% endblock %}
