@@ -45,7 +45,11 @@
                 <tr>
                     <td> {{ invoice.number}} </td>
                     <td> {{ invoice.date}} </td>
-                    <td> {{ invoice.contact_id}} </td>
+                    {% for contact in contacts %}
+                        {% if invoice.contact_id == contact.id %}
+                            <td> {{ contact.fullname }} </td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
             {% endfor %}
         </table>
