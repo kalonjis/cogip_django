@@ -28,10 +28,10 @@
                 <td> {{ company.vat_num }}</td>
                 <td> {{ company.type_value }}</td>
                 <td> {{ company.country_value }}</td>
-                <td><a href="{% url 'office:company-detail' slug=company.slug %}">voir</a></td>
+                <td><a href="{% url 'office:company-detail' slug=company.slug %}">| voir</a></td>
 
                 {% if request.user.is_authenticated %}
-                <td><a href="{% url 'office:company-delete' slug=company.slug %}">supprimer</a></td>
+                <td><a href="{% url 'office:company-delete' slug=company.slug %}">| supprimer</a></td>
                 {% endif %}
 
             </tr>
@@ -54,10 +54,10 @@
                 <td> {{ contact.phone }} </td>
                 <td> {{ contact.email }} </td>
                 <td> {{ contact.company }} </td>
-                <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">voir</a></td>
+                <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
 
                 {% if request.user.is_authenticated %}
-                <td><a href="{% url 'office:contact-delete' slug=contact.slug %}">supprimer</a></td>
+                <td><a href="{% url 'office:contact-delete' slug=contact.slug %}">| supprimer</a></td>
                 {% endif %}
 
             </tr>
@@ -80,10 +80,10 @@
                 <td> {{ invoice.date }} </td>
                 <td> {{ invoice.company }} </td>
                 <td> {{ invoice.contact }} </td>
-                <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">voir</a></td>
+                <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
 
                 {% if request.user.is_authenticated %}
-                <td><a href="{% url 'office:invoice-delete' pk=invoice.id %}">supprimer</a></td>
+                <td><a href="{% url 'office:invoice-delete' pk=invoice.id %}">| supprimer</a></td>
                 {% endif %}
 
 
