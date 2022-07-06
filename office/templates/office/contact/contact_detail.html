@@ -5,19 +5,34 @@
     {% endblock %}
 
     {% block content %}
-        <h1> {{contact.name}}</h1>
+        <h1> Contact : {{contact.fullname}}</h1>
         <table>
             <tr>
-                <th>Name </th>
-                <th>Phone </th>
-                <th>Email </th>
-                <th>Company </th>
+                <td>Contact :</td><td> {{ contact.fullname }} </td>
             </tr>
             <tr>
-                <td> {{ contact.fullname }} </td>
-                <td> {{ contact.phone }} </td>
-                <td> {{ contact.email }} </td>
-                <td> {{ contact.company }} </td>
+                <td>Company :</td><td> {{ contact.company }} </td>
             </tr>
+            <tr>
+                <td>Email :</td><td> {{ contact.email }} </td>
+            </tr>
+            <tr>
+                <td>Phone :</td><td> {{ contact.phone }} </td>
+            </tr>
+        </table>
+
+        <h2>Contact pour les factures :</h2>
+        <table>
+            <tr>
+                <th>N° facture </th>
+                <th>Date </th>
+            </tr>
+            {% for invoice in invoices %}
+            <tr>
+                <td> {{ invoice.number}} </td>
+                <td> {{ invoice.date}} </td>
+            </tr>
+            {% endfor %}
+
         </table>
     {% endblock %}
