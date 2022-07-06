@@ -18,7 +18,7 @@ def home(request):
     return render(request, 'office/home.html', context=context)
 
 
-def officeDetail(request, slug):
+def contact_details(request, slug):
     contact = Contact.objects.get(slug=slug)
     invoices = Invoice.objects.filter(contact_id=contact.id)
     context = {
@@ -26,6 +26,7 @@ def officeDetail(request, slug):
         'invoices': invoices,
     }
     return render(request, 'office/contact/contact_detail.html', context=context)
+
 
 class HomeView(ListView):
     model = 'default'
