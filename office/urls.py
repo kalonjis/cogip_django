@@ -1,7 +1,7 @@
 from django.urls import path, reverse_lazy
 
 from office.models import Company, Contact, Invoice
-from office.views import HomeView, OfficeDetailView, OfficeUpdateView, OfficeDeleteView, OfficeCreateView, \
+from office.views import HomeView, OfficeUpdateView, OfficeDeleteView, OfficeCreateView, \
     contact_details, company_details, invoice_details
 
 app_name = "office"

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -58,23 +60,21 @@ class HomeView(ListView):
     context_object_name = 'default'
 
 
-class OfficeDetailView(DetailView):
-    model = 'default'
-    template_name = 'office/home.html'
-    context_object_name = 'default'
-
-
+@method_decorator(login_required, name='dispatch')
 class OfficeCreateView(CreateView):
     model = 'default'
     template_name = 'office/home.html'
     fields = []
 
+
+@method_decorator(login_required, name='dispatch')
 class OfficeUpdateView(UpdateView):
     model = 'default'
     template_name = 'office/home.html'
     fields = []
 
 
+@method_decorator(login_required, name='dispatch')
 class OfficeDeleteView(DeleteView):
     model = "default"
     template_name = 'default'
