@@ -20,6 +20,7 @@
                         <td> {{ company.name }}</td>
                         <td> {{ company.vat_num }}</td>
                         <td> {{ company.country_value }}</td>
+                        <td><a href="{% url 'office:company-detail' slug=company.slug %}">voir</a></td>
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -38,6 +39,7 @@
                         <td> {{ company.name }}</td>
                         <td> {{ company.vat_num }}</td>
                         <td> {{ company.country_value }}</td>
+                        <td><a href="{% url 'office:company-detail' slug=company.slug %}">voir</a></td>
                     </tr>
                 {% endif %}
             {% endfor %}
