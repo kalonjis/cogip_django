@@ -17,6 +17,7 @@
                 <td> {{ contact.phone }} </td>
                 <td> {{ contact.email }} </td>
                 <td> {{ contact.company.name }} </td>
+                <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">voir</a></td>
             </tr>
             {% endfor %}
         </table>

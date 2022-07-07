@@ -17,6 +17,7 @@
                 <td> {{ invoice.date }} </td>
                 <td> {{ invoice.company }} </td>
                 <td> {{ invoice.contact }} </td>
+                <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
             </tr>
             {% endfor %}
         </table>
