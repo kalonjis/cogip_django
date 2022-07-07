@@ -6,6 +6,14 @@
 
     {% block content %}
         <h1> Facture : {{ invoice.number }}</h1>
+
+        {% if request.user.is_authenticated %}
+            <ul>
+                <li><a href="{% url 'office:invoice-edit' pk=invoice.id %}">| edit</a></li>
+                <li><a href="{% url 'office:invoice-delete' pk=invoice.id %}">| supprimer</a></li>
+            </ul>
+        {% endif %}
+
         <p>Date : {{ invoice.date }}</p>
 
         <h3>Société liée à la facture </h3>

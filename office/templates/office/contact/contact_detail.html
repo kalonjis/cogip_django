@@ -6,6 +6,14 @@
 
     {% block content %}
         <h1> Contact : {{contact.fullname}}</h1>
+
+        {% if request.user.is_authenticated %}
+            <ul>
+                <li><a href="{% url 'office:contact-edit' slug=contact.slug %}">| edit</a></li>
+                <li><a href="{% url 'office:contact-delete' slug=contact.slug %}">| supprimer</a></li>
+            </ul>
+        {% endif %}
+
         <table>
             <tr>
                 <td>Contact :</td><td> {{ contact.fullname }} </td>

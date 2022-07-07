@@ -6,6 +6,14 @@
 
     {% block content %}
         <h1>Société : {{company.name}}</h1>
+
+        {% if request.user.is_authenticated %}
+            <ul>
+                <li><a href="{% url 'office:company-edit' slug=company.slug %}">| edit</a></li>
+                <li><a href="{% url 'office:company-delete' slug=company.slug %}">| supprimer</a></li>
+            </ul>
+        {% endif %}
+
         <table>
             <tr>
                 <td>N° TVA :</td><td> {{ company.vat_number }} </td>
