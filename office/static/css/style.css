@@ -1,0 +1,14 @@
+@import "reset.css";
+
+body {
+    background-color: mintcream;
+}
+
+main {
+
+    width: 60%;
+    margin: 0 auto;
+    padding: 3rem;
+    border: 1px solid blue;
+    background-color: rgba(103, 243, 253, 0.815);
+}
