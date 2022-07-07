@@ -49,7 +49,7 @@ COUNTRIES = (
     ('CO', 'Colombia'),
     ('KM', 'Comoros'),
     ('CG', 'Congo'),
-    ('CD', 'Congo), Democratic Republic'),
+    ('CD', 'Congo, Democratic Republic'),
     ('CK', 'Cook Islands'),
     ('CR', 'Costa Rica'),
     ('CI', 'Cote D\'Ivoire'),
