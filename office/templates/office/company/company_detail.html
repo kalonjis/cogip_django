@@ -38,6 +38,7 @@
                     <td> {{ contact.fullname}} </td>
                     <td> {{ contact.phone}} </td>
                     <td> {{ contact.email}} </td>
+                    <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
                 </tr>
             {% endfor %}
         </table>
@@ -58,6 +59,7 @@
                             <td> {{ contact.fullname }} </td>
                         {% endif %}
                     {% endfor %}
+                    <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
                 </tr>
             {% endfor %}
         </table>

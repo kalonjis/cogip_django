@@ -77,7 +77,6 @@ class Invoice(models.Model):
         return self.number
 
     def save(self, *args, **kwargs):
-        Invoice.increment_num += 1
         if not self.number:
             self.number = str(Invoice.increment_num).rjust(3, '0')
         super().save(*args, **kwargs)

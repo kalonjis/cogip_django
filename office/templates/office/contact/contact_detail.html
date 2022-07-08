@@ -19,7 +19,7 @@
                 <td>Contact :</td><td> {{ contact.fullname }} </td>
             </tr>
             <tr>
-                <td>Company :</td><td> {{ contact.company }} </td>
+                <td>Company :</td><td> {{ contact.company }} </td><td><a href="{% url 'office:company-detail' slug=contact.company.slug %}">| voir</a></td>
             </tr>
             <tr>
                 <td>Email :</td><td> {{ contact.email }} </td>
@@ -39,6 +39,7 @@
             <tr>
                 <td> {{ invoice.number}} </td>
                 <td> {{ invoice.date}} </td>
+                <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
             </tr>
             {% endfor %}
 
