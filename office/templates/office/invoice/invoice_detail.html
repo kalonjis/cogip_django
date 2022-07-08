@@ -15,7 +15,7 @@
         {% endif %}
 
         <p>Date : {{ invoice.date }}</p>
-
+        <hr>
         <h3>Société liée à la facture </h3>
 
            <table>
@@ -31,8 +31,9 @@
                     <td><a href="{% url 'office:company-detail' slug=company.slug %}">| voir</a></td>
                 </tr>
            </table>
-
+        <hr>
         <h3>Personne de contact </h3>
+
             <table>
                 <tr>
                     <th>Nom </th>
