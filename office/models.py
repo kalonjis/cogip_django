@@ -36,7 +36,7 @@ class Company(models.Model):
         return self.get_country_display()
 
     def get_absolute_url(self):
-        return reverse('office:company-home')
+        return reverse('office:company-detail', kwargs={'slug': self.slug})
 
 
 class Contact(models.Model):
@@ -63,7 +63,7 @@ class Contact(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('office:contact-home')
+        return reverse('office:contact-detail', kwargs={'slug': self.slug})
 
 
 class Invoice(models.Model):
@@ -83,5 +83,5 @@ class Invoice(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('office:invoice-home')
+        return reverse('office:invoice-detail', kwargs={'pk': self.pk})
 
