@@ -50,8 +50,8 @@
         </table>
         <hr>
         <h2>Factures :</h2>
-        <table>
-            {% if invoices %}
+        {% if invoices %}
+            <table>
                 <tr>
                     <th>N° facture </th>
                     <th>Date </th>
@@ -70,10 +70,11 @@
                         <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
                     </tr>
                 {% endfor %}
-            {% elif contacts %}
-                <a href="{% url 'office:invoice-create' %}">+ nouvelle factures</a>
-            {% else %}
-                <p>Veuillez ajouter un nouveau contact pour la société {{company.name }} afin de créer une nouvelle facture</p>
-            {% endif %}
-        </table>
+            </table>
+        {% elif contacts %}
+            <a href="{% url 'office:invoice-create' %}">+ nouvelle factures</a>
+        {% else %}
+            <p>Veuillez ajouter un nouveau contact pour la société {{company.name }} afin de créer une nouvelle facture</p>
+        {% endif %}
+
     {% endblock %}
