@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from office.models import Company, Contact, Invoice
@@ -61,10 +61,33 @@ class HomeView(ListView):
 
 
 @method_decorator(login_required, name='dispatch')
-class OfficeCreateView(CreateView):
-    model = 'default'
-    template_name = 'office/home.html'
-    fields = []
+class CompanyCreateView(CreateView):
+    model = Company
+    template_name = 'office/company/company_create.html'
+    fields = ['name', 'vat_number', 'type', 'country']
+
+    def get_success_url(self):
+        return reverse('office:company-detail', kwargs={'slug': self.object.slug})
+
+
+@method_decorator(login_required, name='dispatch')
+class ContactCreateView(CreateView):
+    model = Contact
+    template_name = 'office/contact/contact_create.html'
+    fields = ['firstname', 'lastname', 'phone', 'email', 'company']
+
+    def get_success_url(self):
+        return reverse('office:contact-detail', kwargs={'slug': self.object.slug})
+
+
+@method_decorator(login_required, name='dispatch')
+class InvoiceCreateView(CreateView):
+    model = Invoice
+    template_name = 'office/invoice/invoice_create.html'
+    fields = ['company', 'contact']
+
+    def get_success_url(self):
+        return reverse('office:invoice-detail', kwargs={'pk': self.object.pk})
 
 
 @method_decorator(login_required, name='dispatch')
