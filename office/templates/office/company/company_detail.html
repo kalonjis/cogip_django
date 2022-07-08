@@ -27,27 +27,25 @@
         </table>
         <hr>
         <h2>Personnes de contact </h2>
-        <table>
-            {% if contacts %}
-            <tr>
-                <th>Nom </th>
-                <th>Phone </th>
-                <th>Email </th>
-            </tr>
-                {% for contact in contacts %}
-                    <tr>
-                        <td> {{ contact.fullname}} </td>
-                        <td> {{ contact.phone}} </td>
-                        <td> {{ contact.email}} </td>
-                        <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
-                    </tr>
-                {% endfor %}
-
-            {% else %}
-                <a href="{% url 'office:contact-create' %}">+ nouveau contact</a>
-            {% endif %}
-
-        </table>
+        {% if contacts %}
+            <table>
+                <tr>
+                    <th>Nom </th>
+                    <th>Phone </th>
+                    <th>Email </th>
+                </tr>
+                    {% for contact in contacts %}
+                        <tr>
+                            <td> {{ contact.fullname}} </td>
+                            <td> {{ contact.phone}} </td>
+                            <td> {{ contact.email}} </td>
+                            <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        {% else %}
+            <a href="{% url 'office:contact-create' %}">+ nouveau contact</a>
+        {% endif %}
         <hr>
         <h2>Factures :</h2>
         {% if invoices %}
