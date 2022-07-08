@@ -11,5 +11,6 @@
         <p>Êtes-vous sûr de vouloir supprimer la compagnie "{{ company }}"?</p>
         <input type="submit" value="Oui, supprimer" class="btn btn-delete">
     </form>
+    <a href="{% url 'office:company-detail' slug=company.slug %}"><button type="text">Retour</button></a>
 
 {% endblock %}
