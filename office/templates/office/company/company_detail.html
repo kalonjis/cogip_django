@@ -25,42 +25,55 @@
                 <td>Type :</td><td> {{ company.type_value }} </td>
             </tr>
         </table>
-
+        <hr>
         <h2>Personnes de contact </h2>
         <table>
+            {% if contacts %}
             <tr>
                 <th>Nom </th>
                 <th>Phone </th>
                 <th>Email </th>
             </tr>
-            {% for contact in contacts %}
-                <tr>
-                    <td> {{ contact.fullname}} </td>
-                    <td> {{ contact.phone}} </td>
-                    <td> {{ contact.email}} </td>
-                    <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
-                </tr>
-            {% endfor %}
-        </table>
+                {% for contact in contacts %}
+                    <tr>
+                        <td> {{ contact.fullname}} </td>
+                        <td> {{ contact.phone}} </td>
+                        <td> {{ contact.email}} </td>
+                        <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
+                    </tr>
+                {% endfor %}
 
+            {% else %}
+                <a href="{% url 'office:contact-create' %}">+ nouveau contact</a>
+            {% endif %}
+
+        </table>
+        <hr>
         <h2>Factures :</h2>
         <table>
-            <tr>
-                <th>N° facture </th>
-                <th>Date </th>
-                <th>Personne de contact </th>
-            </tr>
-            {% for invoice in invoices %}
+            {% if invoices %}
                 <tr>
-                    <td> {{ invoice.number}} </td>
-                    <td> {{ invoice.date}} </td>
-                    {% for contact in contacts %}
-                        {% if invoice.contact_id == contact.id %}
-                            <td> {{ contact.fullname }} </td>
-                        {% endif %}
-                    {% endfor %}
-                    <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
+                    <th>N° facture </th>
+                    <th>Date </th>
+                    <th>Personne de contact </th>
                 </tr>
-            {% endfor %}
+
+                {% for invoice in invoices %}
+                    <tr>
+                        <td> {{ invoice.number}} </td>
+                        <td> {{ invoice.date}} </td>
+                        {% for contact in contacts %}
+                            {% if invoice.contact_id == contact.id %}
+                                <td> {{ contact.fullname }} </td>
+                            {% endif %}
+                        {% endfor %}
+                        <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
+                    </tr>
+                {% endfor %}
+            {% elif contacts %}
+                <a href="{% url 'office:invoice-create' %}">+ nouvelle factures</a>
+            {% else %}
+                <p>Veuillez ajouter un nouveau contact pour la société {{company.name }} afin de créer une nouvelle facture</p>
+            {% endif %}
         </table>
     {% endblock %}
