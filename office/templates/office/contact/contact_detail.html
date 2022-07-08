@@ -29,19 +29,24 @@
             </tr>
         </table>
 
-        <h2>Contact pour les factures :</h2>
-        <table>
-            <tr>
-                <th>N° facture </th>
-                <th>Date </th>
-            </tr>
-            {% for invoice in invoices %}
-            <tr>
-                <td> {{ invoice.number}} </td>
-                <td> {{ invoice.date}} </td>
-                <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
-            </tr>
-            {% endfor %}
+        <hr>
 
-        </table>
+        <h2>Contact pour les factures :</h2>
+        {% if invoices %}
+            <table>
+                <tr>
+                    <th>N° facture </th>
+                    <th>Date </th>
+                </tr>
+                {% for invoice in invoices %}
+                <tr>
+                    <td> {{ invoice.number}} </td>
+                    <td> {{ invoice.date}} </td>
+                    <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <a href="{% url 'office:invoice-create' %}">+ nouvelle facture</a>
+        {% endif %}
     {% endblock %}
