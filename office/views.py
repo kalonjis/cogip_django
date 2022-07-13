@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from office.forms import UserRegistrationForm
 from office.models import Company, Contact, Invoice
 from django.views import View
 
@@ -83,6 +84,8 @@ class OfficeDeleteView(DeleteView):
 
 
 def signup(request):
-    return render(request, "users/signup.html")
+    form = UserRegistrationForm()
+
+    return render(request, "users/signup.html", {"form": form})
 
 
