@@ -82,3 +82,7 @@ class OfficeDeleteView(DeleteView):
     success_url = reverse_lazy("home")
 
 
+def signup(request):
+    return render(request, "users/signup.html")
+
+
