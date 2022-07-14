@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -84,7 +84,13 @@ class OfficeDeleteView(DeleteView):
 
 
 def signup(request):
-    form = UserRegistrationForm()
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = UserRegistrationForm()
 
     return render(request, "users/signup.html", {"form": form})
 

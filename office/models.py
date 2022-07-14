@@ -92,7 +92,7 @@ class CustomUserManager(BaseUserManager):
         if not username:
             raise ValueError("Vous devez rentrer un nom d'utilisateur")
         user = self.model(username=username)
-        user.set.password(password)
+        user.set_password(password)
         user.save()
         return user
 
