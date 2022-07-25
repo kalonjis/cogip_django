@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from office.views import home, signup
+from office.views import home, signup, profile
 
 urlpatterns = [
     path('', home, name='home'),
-    path('account/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', profile),
     path('my-office-admin/',  admin.site.urls),
     path('office/', include('office.urls')),
     path('user-signup', signup, name="signup")

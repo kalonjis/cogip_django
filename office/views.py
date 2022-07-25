@@ -95,3 +95,7 @@ def signup(request):
     return render(request, "users/signup.html", {"form": form})
 
 
+def profile(request):
+    return redirect("home")
+
+
