@@ -3,14 +3,20 @@
     {% block title %}<title>Accueil</title>  {% endblock %}
 
     {% block content %}
-    <h1>Accueil</h1>
+    <h1>Bienvenue à la Cogip</h1>
 
     {% if request.user.is_authenticated %}
+    <p>
+        Bonjour {{ request.user.username }} ! <br/>
+        Que souhaitez-vous faire aujourd'hui ?
+    </p>
     <ul>
         <a href="{% url 'office:invoice-create' %}"><li>+ nouvelle factures</li></a>
         <a href="{% url 'office:contact-create' %}"><li>+ nouveau contact</li></a>
         <a href="{% url 'office:company-create' %}"><li>+ nouvelle société</li></a>
     </ul>
+    {% else %}
+        <p>Bonjour !</p>
     {% endif %}
 
     <div>
