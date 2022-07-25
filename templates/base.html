@@ -28,8 +28,9 @@
                     <a href="{% url 'office:company-create' %}"><li>+ nouvelle société</li></a>
                 </div>
             </ul>
+            <a href="{% url 'logout' %}">Déconnexion</a>
         {% else %}
-            <a href="{% url 'home' %}">Connexion</a>
+            <a href="{% url 'login' %}">Connexion</a>
         {% endif %}
 
     </nav>
