@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'office',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'office'
+
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 AUTH_USER_MODEL = "office.CustomUser"
 LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

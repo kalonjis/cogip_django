@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+        <title>Déconnexion</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1>Déconnexion</h1>
+
+        <p>Merci pour votre visite. <br/>
+            Vous allez être rediriger vers la page d'accueil
+        </p>
+
+        <script>
+           setTimeout(function(){
+                window.location.href ="{% url 'home' %}";
+           }, 7000);
+        </script>
+    {% endblock %}
