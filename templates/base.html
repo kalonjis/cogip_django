@@ -21,7 +21,7 @@
         <a href="{% url 'office:contact-home' %}">Contacts</a>
         {% if request.user.is_authenticated %}
             <ul>
-                <a id="admin-btn" onclick="displayToggle(admin-btn)">Admin</a>
+                <a id="admin-btn">Admin</a>
                 <div id="admin-menu" style="display: none;">
                     <a href="{% url 'office:invoice-create' %}"><li>+ nouvelle factures</li></a>
                     <a href="{% url 'office:contact-create' %}"><li>+ nouveau contact</li></a>

@@ -19,8 +19,10 @@ from django.urls import path, include
 from office.views import home, signup
 
 urlpatterns = [
-    path('my-office-admin/',  admin.site.urls),
     path('', home, name='home'),
+    path('account/', include('django.contrib.auth.urls')),
+    path('my-office-admin/',  admin.site.urls),
     path('office/', include('office.urls')),
     path('user-signup', signup, name="signup")
 ]
+
