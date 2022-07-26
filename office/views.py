@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -69,7 +70,13 @@ class OfficeCreateView(CreateView):
 
 
 @method_decorator(login_required, name='dispatch')
-class OfficeUpdateView(UpdateView):
+class OfficeUpdateView(UserPassesTestMixin, UpdateView):
+    def test_func(self):
+        return self.request.user.is_admin
+
+    def handle_no_permission(self):
+        return redirect('home')
+
     model = 'default'
     template_name = 'office/home.html'
     fields = []
