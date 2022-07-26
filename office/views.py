@@ -13,7 +13,7 @@ from django.views import View
 def home(request):
     companies = Company.objects.all().order_by('-pk')[:5]
     contacts = Contact.objects.all().order_by('-pk')[:5]
-    invoices = Invoice.objects.all()
+    invoices = Invoice.objects.all().order_by('-date')[:5]
     context = {
         'companies': companies,
         'contacts': contacts,
