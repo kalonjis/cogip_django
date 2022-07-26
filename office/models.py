@@ -6,6 +6,8 @@ from django.urls import reverse
 
 from office.countries import COUNTRIES
 
+from datetime import datetime
+
 
 class Company(models.Model):
     # Type of company choices
@@ -69,7 +71,7 @@ class Contact(models.Model):
 
 
 class Invoice(models.Model):
-    increment_num = 2
+    increment_num = 0
     number = models.CharField(max_length=100, unique=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
@@ -79,8 +81,13 @@ class Invoice(models.Model):
         return self.number
 
     def save(self, *args, **kwargs):
+        today = datetime.now()
+        year = today.year
+        month = today.month
+        day = today.day
         if not self.number:
-            self.number = str(Invoice.increment_num).rjust(3, '0')
+            self.number = f"F{year}{month}{day}-{str(Invoice.increment_num).rjust(3, '0')}"
+        Invoice.increment_num += 1
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
