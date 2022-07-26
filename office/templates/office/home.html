@@ -36,7 +36,7 @@
                 <td> {{ company.country_value }}</td>
                 <td><a href="{% url 'office:company-detail' slug=company.slug %}">| voir</a></td>
 
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_admin %}
                 <td><a href="{% url 'office:company-delete' slug=company.slug %}">| supprimer</a></td>
                 {% endif %}
 
@@ -62,7 +62,7 @@
                 <td> {{ contact.company }} </td>
                 <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">| voir</a></td>
 
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_admin %}
                 <td><a href="{% url 'office:contact-delete' slug=contact.slug %}">| supprimer</a></td>
                 {% endif %}
 
@@ -88,7 +88,7 @@
                 <td> {{ invoice.contact }} </td>
                 <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
 
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_admin %}
                 <td><a href="{% url 'office:invoice-delete' pk=invoice.id %}">| supprimer</a></td>
                 {% endif %}
 
