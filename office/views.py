@@ -11,8 +11,8 @@ from django.views import View
 
 
 def home(request):
-    companies = Company.objects.all()
-    contacts = Contact.objects.all()
+    companies = Company.objects.all().order_by('-pk')[:5]
+    contacts = Contact.objects.all().order_by('-pk')[:5]
     invoices = Invoice.objects.all()
     context = {
         'companies': companies,
