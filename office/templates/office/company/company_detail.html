@@ -7,7 +7,7 @@
     {% block content %}
         <h1>Société : {{company.name}}</h1>
 
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_admin %}
             <ul>
                 <li><a href="{% url 'office:company-edit' slug=company.slug %}">| edit</a></li>
                 <li><a href="{% url 'office:company-delete' slug=company.slug %}">| supprimer</a></li>

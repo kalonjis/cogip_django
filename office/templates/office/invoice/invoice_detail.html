@@ -7,7 +7,7 @@
     {% block content %}
         <h1> Facture : {{ invoice.number }}</h1>
 
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_admin %}
             <ul>
                 <li><a href="{% url 'office:invoice-edit' pk=invoice.id %}">| edit</a></li>
                 <li><a href="{% url 'office:invoice-delete' pk=invoice.id %}">| supprimer</a></li>

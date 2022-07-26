@@ -7,7 +7,7 @@
     {% block content %}
         <h1> Contact : {{contact.fullname}}</h1>
 
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_admin %}
             <ul>
                 <li><a href="{% url 'office:contact-edit' slug=contact.slug %}">| edit</a></li>
                 <li><a href="{% url 'office:contact-delete' slug=contact.slug %}">| supprimer</a></li>
