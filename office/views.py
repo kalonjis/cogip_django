@@ -69,21 +69,23 @@ class OfficeCreateView(CreateView):
     fields = []
 
 
-@method_decorator(login_required, name='dispatch')
-class OfficeUpdateView(UserPassesTestMixin, UpdateView):
+class UserIsAdminMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_admin
 
     def handle_no_permission(self):
         return redirect('home')
 
+
+@method_decorator(login_required, name='dispatch')
+class OfficeUpdateView(UserIsAdminMixin, UpdateView):
     model = 'default'
     template_name = 'office/home.html'
     fields = []
 
 
 @method_decorator(login_required, name='dispatch')
-class OfficeDeleteView(DeleteView):
+class OfficeDeleteView(UserIsAdminMixin, DeleteView):
     model = "default"
     template_name = 'default'
     context_object_name = "default"
