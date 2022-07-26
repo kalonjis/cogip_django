@@ -7,8 +7,9 @@
     {% block content %}
         <h1>Déconnexion</h1>
 
-        <p>Merci pour votre visite. <br/>
-            Vous allez être rediriger vers la page d'accueil dans <span id="chrono"></span>
+        <p>Merci pour votre visite! <br/><br/>
+
+            Vous allez être redirigé vers la page d'accueil dans <span id="chrono"></span>
         </p>
 
         <script>
@@ -16,14 +17,8 @@
             var x ;
             
             function decompte(){
-                if(cpt>=0){
-                    if(cpt>1)
-                    {
-                        var sec = " secondes.";
-                    } else {
-                        var sec = " seconde.";
-                    }
-                    document.getElementById("chrono").innerHTML = cpt + sec ;
+                if(cpt>0){
+                    document.getElementById("chrono").innerHTML = `${cpt} seconde${cpt > 1 ? 's': ''}...`;
                     cpt-- ;
                     x = setTimeout("decompte()",1000) ;
                 }else{
