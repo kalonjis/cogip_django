@@ -19,7 +19,9 @@
         <a href="{% url 'office:invoice-home' %}">Factures</a>
         <a href="{% url 'office:company-home' %}">Sociétés</a>
         <a href="{% url 'office:contact-home' %}">Contacts</a>
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <a href="{% url 'admin:index' %}">Admin</a>
+        {% elif request.user.is_authenticated %}
             <ul>
                 <a id="admin-btn">Admin</a>
                 <div id="admin-menu" style="display: none;">
@@ -32,6 +34,7 @@
         {% else %}
             <a href="{% url 'login' %}">Connexion</a>
         {% endif %}
+
 
     </nav>
 
