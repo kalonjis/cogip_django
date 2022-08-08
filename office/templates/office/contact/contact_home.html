@@ -18,6 +18,9 @@
                 <td> {{ contact.email }} </td>
                 <td> {{ contact.company.name }} </td>
                 <td><a href="{% url 'office:contact-detail' slug=contact.slug %}">voir</a></td>
+                {% if request.user.is_admin %}
+                    <td><a href="{% url 'office:contact-delete' slug=contact.slug %}">| supprimer</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>

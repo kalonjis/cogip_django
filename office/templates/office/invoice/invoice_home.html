@@ -18,6 +18,9 @@
                 <td> {{ invoice.company }} </td>
                 <td> {{ invoice.contact }} </td>
                 <td><a href="{% url 'office:invoice-detail' pk=invoice.id %}">| voir</a></td>
+                {% if request.user.is_admin %}
+                <td><a href="{% url 'office:invoice-delete' pk=invoice.id %}">| supprimer</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>

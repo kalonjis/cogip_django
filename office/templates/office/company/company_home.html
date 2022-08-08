@@ -21,6 +21,9 @@
                         <td> {{ company.vat_num }}</td>
                         <td> {{ company.country_value }}</td>
                         <td><a href="{% url 'office:company-detail' slug=company.slug %}">voir</a></td>
+                        {% if request.user.is_admin %}
+                            <td><a href="{% url 'office:company-delete' slug=company.slug %}">| supprimer</a></td>
+                        {% endif %}
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -40,7 +43,10 @@
                         <td> {{ company.vat_num }}</td>
                         <td> {{ company.country_value }}</td>
                         <td><a href="{% url 'office:company-detail' slug=company.slug %}">voir</a></td>
-                    </tr>
+                        {% if request.user.is_admin %}
+                            <td><a href="{% url 'office:company-delete' slug=company.slug %}">| supprimer</a></td>
+                        {% endif %}
+                        </tr>
                 {% endif %}
             {% endfor %}
         </table>
